@@ -40,6 +40,8 @@ Run under gdb, stop **before any module code executes**, dump the *decoded* cons
 
 ### NDX engine — full source recovery (primary interface)
 
+**NDX is the most important and useful part of HEXPYRION — the most mature and reliable engine in the tool, and the one that genuinely revolutionizes recovery work.** Give it a compiled binary and it recovers real, readable Python source from it.
+
 Recover every first-party module from a compiled binary:
 
 ```bash
