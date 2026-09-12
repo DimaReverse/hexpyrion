@@ -28,16 +28,46 @@ Statically unpack any Nuitka onefile binary (zstd included) without ever executi
 ### `--trigger` — runtime blob capture
 Run under gdb, stop **before any module code executes**, dump the *decoded* constants blob from process memory, then kill the process. The payload never runs; the captured blob feeds the same static devirt pipeline. Defeats in-memory and Nuitka Commercial data-hiding blob protection — useful when analyzing Commercial-packed malware.
 
-### Whole-binary source emit
+### NDX engine — full source recovery (primary interface)
+
+Recover every first-party module from a compiled binary:
+
 ```bash
-py nuitka_decompiler.py --source app.dll \
+python nuitka_decompiler.py --ndx --dev-only main.exe -o OUT
+```
+
+Or target specific modules only:
+
+```bash
+python nuitka_decompiler.py --ndx --only "pkg.*,__main__,__parents_main__" main.exe -o OUT
+```
+
+Key NDX options:
+
+| Option | Meaning |
+|---|---|
+| `--dev-only` | First-party modules only — bundled libraries are skipped |
+| `--only MODS` | Comma-separated glob patterns to filter modules |
+| `-o / --output-dir` | Output directory (default `HEXPYRION_OUT`) |
+| `--abi-only` | Static ABI discovery only, no source recovery |
+| `--target-python X.Y` | Explicit runtime version when embedded metadata is unavailable |
+| `--strict` | Exit with code 2 on detectable recovery gaps |
+| `-v` | Verbose output |
+
+### Classic pipeline
+
+Whole-binary source emit:
+
+```bash
+python nuitka_decompiler.py --source app.dll \
     --emit-all-source out_source --only "pkg.*,__main__,__parents_main__"
 ```
 
-### Typical devirtualization
+Devirtualization:
+
 ```bash
-py nuitka_decompiler.py --source app.exe --devirt --devirt-decompile
-py nuitka_decompiler.py --source app.exe --trigger          # runtime blob
+python nuitka_decompiler.py --source app.exe --devirt --devirt-decompile
+python nuitka_decompiler.py --source app.exe --trigger          # runtime blob
 ```
 
 ## Install
