@@ -2,9 +2,19 @@
 
 **Static Nuitka source recovery** — translate Nuitka's native output back into Python. No runtime hooks, no injection; static mode is the default.
 
-By **dimareverse** — devirt / onefile-unpack / native reconstruction.
+By [**DimaReverse**](https://github.com/DimaReverse) — devirt / onefile-unpack / native reconstruction.
 
 > ⚠️ **Authorized use only.** Use this tool only on software you own or are authorized to inspect. It is intended for recovering your own lost source, security research, and malware analysis (Nuitka and Nuitka Commercial are widely used to pack malware precisely because they hamper analysis).
+
+## A note from the author
+
+Yes, I know — there are a lot of repos on my profile, and I'm sorry for opening yet another one. But every decompiler I've ever built is a piece of progress planted in the history of reverse engineering, and I want each of them to be remembered.
+
+This one is my last mark on GitHub, at least for now. I've grown tired of reverse engineering — this is not a goodbye, it's a pause, whether it turns out long or short. I'm not disappearing: you'll find me over on my gaming YouTube channel, [**@dimamilitiagaming**](https://www.youtube.com/@dimamilitiagaming), playing video games instead of dissecting binaries.
+
+HEXPYRION still has some bugs, but it can now genuinely work miracles. If you want to push it further, **open your forks** — and I'll be keeping a kind of leaderboard of the forks with the most stars and the ones that prove most useful.
+
+— [**DimaReverse**](https://github.com/DimaReverse), Venice, Italy
 
 ## What it does
 
