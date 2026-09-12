@@ -82,6 +82,16 @@ python nuitka_decompiler.py --source app.exe --devirt --devirt-decompile
 python nuitka_decompiler.py --source app.exe --trigger          # runtime blob
 ```
 
+## Handling a Nuitka-packed binary
+
+Got a suspicious or unknown Nuitka binary? Here is the recommended triage path before feeding anything to HEXPYRION:
+
+1. **Onefile binary? Extract the payload statically — never execute it.**
+   - [DimaReverse/tocorator](https://github.com/DimaReverse/tocorator) — extracts embedded payloads from Nuitka onefile binaries; fully static, the target is never executed.
+   - [extremecoders-re/nuitka-extractor](https://github.com/extremecoders-re/nuitka-extractor) — the classic Nuitka onefile extractor.
+2. **Then point HEXPYRION at the extracted files** (`--ndx --dev-only <binary> -o OUT`).
+3. **Worst case — protected layouts (e.g. Themida/WinLicense wrapping):** follow [DimaReverse/nuitka-themida-unpacker](https://github.com/DimaReverse/nuitka-themida-unpacker), where the whole pipeline is explained step by step. ⚠️ That pipeline **requires running the sample**, so make absolutely sure you are working inside a protected, isolated environment (disposable VM, no network, no shared folders) before you start.
+
 ## Install
 
 ```
