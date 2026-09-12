@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Tool output directories and artifacts
+OUT*/
+out/
+.ndl_cache/
+*.pyc
+*.pyo
+*.pyd
+recover*/
+
+# Binaries under analysis — never commit samples
+*.exe
+*.dll
+*.bin
+*.so
+*.dylib
+*.onefile

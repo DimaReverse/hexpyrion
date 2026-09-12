@@ -1,0 +1,6 @@
+pefile
+capstone
+zstandard
+xdis
+uncompyle6
+decompyle3
